@@ -9,11 +9,14 @@ dotenv.config()
 const mailService = require('./mail-service')
 
 const app: Express = express()
+const PORT = process.env.PORT || 5000
 
 app.use(cors())
 app.use(bodyParser.json())
 
-const PORT = process.env.PORT || 5000
+app.get('/', (req: Request, res: Response) => {
+  res.send('hello!')
+})
 
 app.post('/send-mail', async (req: Request, res: Response) => {
   try {
