@@ -1,32 +1,31 @@
-import {IMailDTO} from './dto'
+import { IMailDTO } from './dto'
 // @ts-ignore
 import nodemailer from 'nodemailer'
 
 class MailService {
-    transporter
+  transporter
 
-    constructor() {
-        this.transporter = nodemailer.createTransport({
-            service: process.env.SMTP_SERVICE,
-            port: 587,
-            auth: {
-                user: process.env.SMTP_USER,
-                pass: process.env.SMTP_PASSWORD,
-            },
-            requireTLS: true,
-            secure: false,
-        })
-    }
+  constructor() {
+    this.transporter = nodemailer.createTransport({
+      service: process.env.SMTP_SERVICE,
+      auth: {
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASSWORD,
+      },
+      requireTLS: true,
+      secure: false,
+    })
+  }
 
-    async sendEmail(data: IMailDTO) {
-        await this.transporter.sendMail({
-            from: `${data.name} <${data.email}>`, // sender address
-            to: process.env.SMTP_USER, // list of receivers
-            subject: "WORK ✔", // Subject line
-            text: `${data.message}`, // plain text body
-            html: `<b>${data.message}</b>`, // html body
-        })
-    }
+  async sendEmail(data: IMailDTO) {
+    await this.transporter.sendMail({
+      from: `${data.name} <${data.email}>`, // sender address
+      to: process.env.SMTP_USER, // list of receivers
+      subject: 'WORK ✔', // Subject line
+      text: `${data.message}`, // plain text body
+      html: `<b>${data.message}</b>`, // html body
+    })
+  }
 }
 
 module.exports = new MailService()

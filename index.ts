@@ -1,8 +1,8 @@
-import { IMailDTO } from './dto'
+import {IMailDTO} from './dto'
 import bodyParser from 'body-parser'
 import cors from 'cors'
 import dotenv from 'dotenv'
-import express, { Express, Request, Response } from 'express'
+import express, {Express, Request, Response} from 'express'
 
 dotenv.config()
 
@@ -15,22 +15,24 @@ app.use(cors())
 app.use(bodyParser.json())
 
 app.get('/', (req: Request, res: Response) => {
-  res.send('hello!')
+    res.send('hello!')
 })
 
 app.post('/send-mail', async (req: Request, res: Response) => {
-  try {
-    const data: IMailDTO = req.body
+    try {
+        const data: IMailDTO = req.body
 
-    await mailService.sendEmail(data)
+        res.send('message is send!')
 
-    res.send('message is send!')
-  } catch (error) {
-    console.log('ERROR')
-    console.log(error)
-  }
+        await mailService.sendEmail(data)
+
+
+    } catch (error) {
+        console.log('ERROR')
+        console.log(error)
+    }
 })
 
 app.listen(PORT, () => {
-  console.log(`Example app listening on port ${PORT}`)
+    console.log(`Example app listening on port ${PORT}`)
 })
