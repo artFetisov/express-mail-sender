@@ -12,8 +12,7 @@ const mailService = require('./mail-service')
 const app: Express = express()
 const PORT = process.env.PORT || 5000
 
-//@ts-ignore
-app.use(corsMiddleware())
+app.use(corsMiddleware)
 app.use(cors())
 app.use(bodyParser.json())
 
