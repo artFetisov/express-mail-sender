@@ -7,7 +7,7 @@
     "esnext"
   ],
   "include": [
-    "index.ts"
+    "api/index.ts"
     // here you can include another directories with sources
   ],
   "exclude": [

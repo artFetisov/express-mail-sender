@@ -1,11 +1,11 @@
 {
   "name": "send-gmail-back",
   "version": "1.0.0",
-  "main": "index.ts",
+  "main": "api/index.ts",
   "license": "MIT",
   "scripts": {
-    "start": "ts-node --experimental-specifier-resolution=node ./index.ts",
-    "dev": "nodemon index.ts"
+    "start": "ts-node --experimental-specifier-resolution=node api/index.ts",
+    "dev": "nodemon api/index.ts"
   },
   "dependencies": {
     "@tsconfig/node16": "^1.0.3",
